@@ -11,7 +11,7 @@ import 'package:meraki/widget/widgets.dart';
 import 'chatsRoomScreen.dart';
 
 
-
+String user = "";
 class SignIn extends StatefulWidget {
   //const SignIn({Key? key}) : super(key: key);
   final Function toggle;
@@ -33,12 +33,14 @@ class _SignInState extends State<SignIn> {
   bool isLoading = false;
   QuerySnapshot? snapshotUserInfo;
   signIn() {
+
     if (formKey.currentState!.validate()) {
       HelperFunctions.saveUserEmailSharedPreference(
           emailTextEditingController.text);
 
       setState(() {
         isLoading = true;
+        user = emailTextEditingController.text;
       });
       databaseMethods
           .getUserByUseremail(emailTextEditingController.text)

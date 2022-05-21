@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:meraki/Screens/chatsRoomScreen.dart';
 import 'package:meraki/Screens/profile.dart';
 
 import '../services/auth.dart';
@@ -48,7 +49,13 @@ PreferredSizeWidget appBarMain2(BuildContext context){
   return AppBar(
     backgroundColor:Color.fromRGBO(120, 76, 66, 1),
     toolbarHeight: 60,
-
+    leading: IconButton(
+      icon: Icon(Icons.arrow_back, color: Colors.black),
+      onPressed:()=>
+          WidgetsBinding.instance?.addPostFrameCallback((_) {
+            Navigator.push(context, MaterialPageRoute(builder: (_) => ChatRoom()));
+          }),
+    ),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(
         bottom: Radius.circular(40),
@@ -82,3 +89,4 @@ PreferredSizeWidget appBarMain1(BuildContext context){
 
   );
 }
+
